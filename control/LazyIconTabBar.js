@@ -6,11 +6,6 @@ sap.ui.define([
   'use strict'
 
   const LazyIconTabBar = IconTabBar.extend('sap.bi.webi.ui.control.LazyIconTabBar', {
-    metadata: {
-      properties: {
-        truc: {}
-      }
-    },
     renderer: 'sap.m.IconTabBarRenderer'
   })
 

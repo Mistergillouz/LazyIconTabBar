@@ -43,20 +43,14 @@ sap.ui.define([
   }
 
   LazyIconTabFilter.prototype._loadFragment = function (fragmentName) {
-    const name = this._getName(fragmentName)
-    const fragment = sap.ui.xmlfragment(name, fragmentName)
+    const fragment = sap.ui.xmlfragment(fragmentName, fragmentName)
     this.addContent(fragment)
   }
 
   LazyIconTabFilter.prototype._loadView = function (viewName) {
-    const name = this._getName(viewName)
-    const view = sap.ui.xmlview(name, viewName)
+    const view = sap.ui.xmlview(viewName, viewName)
     this.addContent(view)
   }
 
-  LazyIconTabFilter.prototype._getName = function (path) {
-    const index = path.lastIndexOf('.')
-    return path.substring(index + 1)
-  }
   return LazyIconTabFilter
 })

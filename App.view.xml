@@ -1,0 +1,36 @@
+<mvc:View
+   xmlns="sap.m"
+   xmlns:control="sap.bi.webi.ui.control"
+   controllerName="gs.App"
+   xmlns:core="sap.ui.core"
+   xmlns:mvc="sap.ui.core.mvc">
+
+   <control:LazyIconTabBar
+		select="handleIconTabBarSelect"
+		class="sapUiResponsiveContentPadding">
+		<control:items>
+			<control:LazyIconTabFilter
+            view="sap.bi.webi.ui.view.Test"
+				showAll="true"
+				count="{/ProductCollectionStats/Counts/Total}"
+				text="Plop"
+				key="All" />
+			<IconTabSeparator />
+			<control:LazyIconTabFilter
+            view="sap.bi.webi.ui.view.Test2"
+				icon="sap-icon://begin"
+				iconColor="Positive"
+				count="10"
+				text="Plip"
+				key="Ok" />
+			<control:LazyIconTabFilter
+            fragment="sap.bi.webi.ui.fragment.FragTest"
+				icon="sap-icon://compare"
+				iconColor="Critical"
+				count="7"
+				text="Fragment"
+				key="Heavy" />
+		</control:items>
+	</control:LazyIconTabBar>
+
+</mvc:View>

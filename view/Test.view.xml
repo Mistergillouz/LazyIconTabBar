@@ -1,0 +1,7 @@
+<mvc:View controllerName="sap.bi.webi.ui.controller.Test"
+			height="100%"
+			xmlns:mvc="sap.ui.core.mvc"
+			xmlns="sap.m">
+
+	<Button text="Plop" press="onPlop"/>
+</mvc:View>

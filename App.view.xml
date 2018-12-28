@@ -5,6 +5,16 @@
    xmlns:core="sap.ui.core"
    xmlns:mvc="sap.ui.core.mvc">
 
+	<HBox>
+		<Button text="Lazy1" press="onLazy1"/>
+		<Button text="Lazy2" press="onLazy2"/>
+		<Button text="Lazy3" press="onLazy3"/>
+	</HBox>
+	
+	<control:LazyControl id="lazy1" view="sap.bi.webi.ui.view.Lazy"/>
+	<control:LazyControl id="lazy2" view="sap.bi.webi.ui.view.Test2"/>
+	<control:LazyControl id="lazy3" fragment="sap.bi.webi.ui.fragment.FragTest"/>
+
    <control:LazyIconTabBar
 		select="handleIconTabBarSelect"
 		class="sapUiResponsiveContentPadding">

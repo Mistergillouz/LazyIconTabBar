@@ -28,28 +28,36 @@ sap.ui.define([
     }
   }
 
+  LazyIconTabFilter.prototype._unLoad = function () {
+    this.removeAllContent()
+    this._loaded = false
+  }
+
   LazyIconTabFilter.prototype._load = function () {
-    const view = this.getView()
-    if (view) {
-      this._loadView(view)
+    let components = null
+    const viewName = this.getView()
+    if (viewName) {
+      components = sap.ui.xmlview(viewName, viewName)
     } else {
-      const fragment = this.getFragment()
-      if (fragment) {
-        this._loadFragment(fragment)
+      const fragmentName = this.getFragment()
+      if (fragmentName) {
+        components = sap.ui.xmlfragment(fragmentName, fragmentName)
       }
     }
 
-    this._loaded = true
+    if (components) {
+      this._loadContent(components)
+      this._loaded = true
+    }
   }
 
-  LazyIconTabFilter.prototype._loadFragment = function (fragmentName) {
-    const fragment = sap.ui.xmlfragment(fragmentName, fragmentName)
-    this.addContent(fragment)
-  }
-
-  LazyIconTabFilter.prototype._loadView = function (viewName) {
-    const view = sap.ui.xmlview(viewName, viewName)
-    this.addContent(view)
+  LazyIconTabFilter.prototype._loadContent = function (components) {
+    this.removeAllContent()
+    if (Array.isArray(components)) {
+      components.forEach((component) => this.addContent(component))
+    } else {
+      this.addContent(components)
+    }
   }
 
   return LazyIconTabFilter

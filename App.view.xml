@@ -7,11 +7,16 @@
 
 	<HBox>
 		<Button text="Lazy1" press="onLazy1"/>
+		<Button text="Lazy1-1" press="onLazy11"/>
 		<Button text="Lazy2" press="onLazy2"/>
 		<Button text="Lazy3" press="onLazy3"/>
+		<Button text="Destroy Lazy1" press="onDestroyLazy1"/>
+		<Button text="Destroy Lazy2" press="onDestroyLazy2"/>
+		<Button text="Destroy Lazy3" press="onDestroyLazy3"/>
 	</HBox>
 	
 	<control:LazyControl id="lazy1" view="sap.bi.webi.ui.view.Lazy"/>
+	<control:LazyControl id="lazy1-1" view="sap.bi.webi.ui.view.Lazy"/>
 	<control:LazyControl id="lazy2" view="sap.bi.webi.ui.view.Test2"/>
 	<control:LazyControl id="lazy3" fragment="sap.bi.webi.ui.fragment.FragTest"/>
 

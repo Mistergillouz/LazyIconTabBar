@@ -11,9 +11,10 @@ sap.ui.define([
         activated: { type: 'boolean', defaultValue: false }
       },
       aggregations: {
-        _components: {
+        content: {
           type: 'sap.ui.core.Control',
-          multiple: false
+          visibility: 'hidden',
+          multiple: true
         }
       }
     },
@@ -27,14 +28,12 @@ sap.ui.define([
   LazyControl.prototype._render = function (out) {
     out.write('<div')
     out.writeControlData(this)
-    this.addStyleClass('sapWingLazyControl')
-    out.writeClasses()
     out.write('>')
-    const components = this.getAggregation('_components')
-    if (components) {
-      out.renderControl(components)
-    }
     out.write('</div>')
+    const components = this.getAggregation('content')
+    if (Array.isArray(components)) {
+      components.forEach((component) => out.renderControl(component))
+    }
   }
 
   LazyControl.prototype.setActivated = function (activated) {
@@ -43,18 +42,37 @@ sap.ui.define([
       let components = null
       const viewName = this.getView()
       if (viewName) {
-        components = sap.ui.xmlview(viewName, viewName)
+        components = sap.ui.xmlview(this._createId(viewName), viewName)
       } else {
         const fragmentName = this.getFragment()
         if (fragmentName) {
-          components = sap.ui.xmlfragment(fragmentName, fragmentName)
+          components = sap.ui.xmlfragment(this._createId(fragmentName), fragmentName)
         }
       }
 
-      this.setAggregation('_components', components)
-      this._loaded = true
+      if (components) {
+        this._loadContent(components)
+        this.rerender()
+        this._loaded = true
+      }
+    } else if (!activated && this._loaded) {
+      this.destroyAggregation('content')
+      this.rerender()
+      this._loaded = false
     }
   }
 
+  LazyControl.prototype._createId = function (name) {
+    return name + '-' + jQuery.sap.uid()
+  }
+
+  LazyControl.prototype._loadContent = function (components) {
+    this.destroyAggregation('content')
+    if (Array.isArray(components)) {
+      components.forEach((component) => this.addAggregation('content', component, true, true))
+    } else {
+      this.addAggregation('content', components, true, true)
+    }
+  }
   return LazyControl
 })

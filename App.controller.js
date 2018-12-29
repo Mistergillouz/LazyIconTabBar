@@ -19,6 +19,22 @@ sap.ui.define([
   C.prototype.onLazy3 = function () {
     this.byId('lazy3').setActivated(true)
   }
+
+  C.prototype.onLazy11 = function () {
+    this.byId('lazy1-1').setActivated(true)
+  }
+
+  C.prototype.onDestroyLazy1 = function () {
+    this.byId('lazy1').setActivated(false)
+  }
+  
+  C.prototype.onDestroyLazy2 = function () {
+    this.byId('lazy2').setActivated(false)
+  }
+  
+  C.prototype.onDestroyLazy3 = function () {
+    this.byId('lazy3').setActivated(false)
+  }
   
   return C
 });

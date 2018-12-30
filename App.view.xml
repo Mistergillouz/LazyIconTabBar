@@ -15,10 +15,10 @@
 		<Button text="Destroy Lazy3" press="onDestroyLazy3"/>
 	</HBox>
 	
-	<control:LazyControl id="lazy1" view="sap.bi.webi.ui.view.Lazy"/>
-	<control:LazyControl id="lazy1-1" view="sap.bi.webi.ui.view.Lazy"/>
-	<control:LazyControl id="lazy2" view="sap.bi.webi.ui.view.Test2"/>
-	<control:LazyControl id="lazy3" fragment="sap.bi.webi.ui.fragment.FragTest"/>
+	<control:LazyView id="lazy1" view="sap.bi.webi.ui.view.Lazy"/>
+	<control:LazyView id="lazy1-1" view="sap.bi.webi.ui.view.Lazy"/>
+	<control:LazyView id="lazy2" view="sap.bi.webi.ui.view.Test2"/>
+	<control:LazyView id="lazy3" fragment="sap.bi.webi.ui.fragment.FragTest"/>
 
    <control:LazyIconTabBar
 		select="handleIconTabBarSelect"

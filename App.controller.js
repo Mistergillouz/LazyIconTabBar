@@ -9,31 +9,31 @@ sap.ui.define([
   }
 
   C.prototype.onLazy1 = function () {
-    this.byId('lazy1').setActivated(true)
+    this.byId('lazy1').setLoaded(true, () => console.log('Loaded lazy1'))
   }
 
   C.prototype.onLazy2 = function () {
-    this.byId('lazy2').setActivated(true)
+    this.byId('lazy2').setLoaded(true)
   }
 
   C.prototype.onLazy3 = function () {
-    this.byId('lazy3').setActivated(true)
+    this.byId('lazy3').setLoaded(true)
   }
 
   C.prototype.onLazy11 = function () {
-    this.byId('lazy1-1').setActivated(true)
+    this.byId('lazy1-1').setLoaded(true)
   }
 
   C.prototype.onDestroyLazy1 = function () {
-    this.byId('lazy1').setActivated(false)
+    this.byId('lazy1').setLoaded(false)
   }
   
   C.prototype.onDestroyLazy2 = function () {
-    this.byId('lazy2').setActivated(false)
+    this.byId('lazy2').setLoaded(false)
   }
   
   C.prototype.onDestroyLazy3 = function () {
-    this.byId('lazy3').setActivated(false)
+    this.byId('lazy3').setLoaded(false)
   }
   
   return C
